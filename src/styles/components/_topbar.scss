@@ -1,0 +1,86 @@
+.topbarContainer {
+    @include widthHeight(100%, 50px);
+    @include flex(center, unset, row, unset);
+    background-color: $coccibook-blue;
+    position: sticky;
+    top: 0;
+}
+
+.topbarLeft {
+    flex: 3;
+}
+
+.logo {
+    @include font(24px, bold, #fff);
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.topbarCenter {
+    flex: 5;
+}
+
+.searchbar {
+    @include widthHeight(100%, 30px);
+    @include flex(center, unset, row, unset);
+    background-color: #fff;
+    border-radius: 30px;
+}
+
+.searchIcon {
+    @include font(16px, unset, #000);
+    padding: 0 7px;
+}
+
+.searchInput {
+    @include widthHeight(70%, auto);
+    border: none;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.topbarRight {
+    @include flex(center, space-around, row, unset);
+    @include font(unset, unset, #fff);
+    flex: 4;
+}
+
+.topbarLinks {}
+
+.topbarLink {
+    @include font(14px, unset, unset);
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.topbarIcons {
+    display: flex;
+}
+
+.topbarIconItem {
+    position: relative;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.iconItem {
+    @include font(22px, unset, unset);
+}
+
+.topbarIconBadge {
+    @include widthHeight(15px, 15px);
+    @include flex(center, center, row, unset);
+    @include font(12px, unset, unset);
+    @include positionAbsolute(-5px, -5px, unset, unset);
+    border-radius: 50%;
+    background-color: $coccibook-alert;
+} 
+
+.topbarImg {
+    @include widthHeight(32px, 32px);
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+} 
