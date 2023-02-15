@@ -1,4 +1,4 @@
-.topbarContainer {
+.headerContainer {
     @include widthHeight(100%, 50px);
     @include flex(center, unset, row, unset);
     background-color: $coccibook-blue;
@@ -6,7 +6,7 @@
     top: 0;
 }
 
-.topbarLeft {
+.headerLeft {
     flex: 3;
 }
 
@@ -16,7 +16,7 @@
     cursor: pointer;
 }
 
-.topbarCenter {
+.headerCenter {
     flex: 5;
 }
 
@@ -41,25 +41,25 @@
     }
 }
 
-.topbarRight {
+.headerRight {
     @include flex(center, space-around, row, unset);
     @include font(unset, unset, #fff);
     flex: 4;
 }
 
-.topbarLinks {}
+.headerLinks {}
 
-.topbarLink {
+.headerLink {
     @include font(14px, unset, unset);
     margin-right: 10px;
     cursor: pointer;
 }
 
-.topbarIcons {
+.headerIcons {
     display: flex;
 }
 
-.topbarIconItem {
+.headerIconItem {
     position: relative;
     margin-right: 15px;
     cursor: pointer;
@@ -69,7 +69,7 @@
     @include font(22px, unset, unset);
 }
 
-.topbarIconBadge {
+.headerIconBadge {
     @include widthHeight(15px, 15px);
     @include flex(center, center, row, unset);
     @include font(12px, unset, unset);
@@ -78,7 +78,7 @@
     background-color: $coccibook-alert;
 } 
 
-.topbarImg {
+.headerImg {
     @include widthHeight(32px, 32px);
     border-radius: 50%;
     object-fit: cover;

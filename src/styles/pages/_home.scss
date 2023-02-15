@@ -1,0 +1,4 @@
+.homeContainer {
+    @include flex(unset, unset, row, unset);
+    @include widthHeight(100%, unset);
+}
