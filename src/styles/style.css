@@ -68,6 +68,176 @@
   display: flex;
 }
 
+.login {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: unset;
+  background-color: #f0f2f5;
+}
+
+.loginWrapper {
+  width: 70%;
+  height: 70%;
+  display: flex;
+}
+
+.loginLeft,
+.loginRight {
+  flex: 1;
+  display: flex;
+  align-items: unset;
+  justify-content: center;
+  flex-direction: column;
+  gap: unset;
+}
+
+.loginLogo {
+  font-size: 50px;
+  font-weight: 800;
+  color: #1877f2;
+  margin-bottom: 10px;
+}
+
+.loginDesc {
+  font-size: 24px;
+}
+
+.loginBox {
+  display: flex;
+  align-items: unset;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: unset;
+  height: 300px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.loginInput {
+  height: 50px;
+  border-radius: 10px;
+  border: 1px solid gray;
+  font-size: 18px;
+  padding-left: 20px;
+}
+.loginInput:focus {
+  outline: none;
+}
+
+.loginButton,
+.loginRegisterButton {
+  font-size: 20px;
+  font-weight: 500;
+  color: #fff;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  background-color: #1877f2;
+  cursor: pointer;
+}
+.loginButton.loginRegisterButton,
+.loginRegisterButton.loginRegisterButton {
+  width: 60%;
+  height: 50px;
+  background-color: #42b72a;
+  align-self: center;
+}
+
+.loginForgot {
+  text-align: center;
+  color: #1877f2;
+}
+
+.register {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: unset;
+  background-color: #f0f2f5;
+}
+
+.registerWrapper {
+  width: 70%;
+  height: 70%;
+  display: flex;
+}
+
+.registerLeft,
+.registerRight {
+  flex: 1;
+  display: flex;
+  align-items: unset;
+  justify-content: center;
+  flex-direction: column;
+  gap: unset;
+}
+
+.registerLogo {
+  font-size: 50px;
+  font-weight: 800;
+  color: #1877f2;
+  margin-bottom: 10px;
+}
+
+.registerDesc {
+  font-size: 24px;
+}
+
+.registerBox {
+  display: flex;
+  align-items: unset;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: unset;
+  height: 300px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.registerInput {
+  height: 50px;
+  border-radius: 10px;
+  border: 1px solid gray;
+  font-size: 18px;
+  padding-left: 20px;
+}
+.registerInput:focus {
+  outline: none;
+}
+
+.registerButton,
+.registerRegisterButton {
+  font-size: 20px;
+  font-weight: 500;
+  color: #fff;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  background-color: #1877f2;
+  cursor: pointer;
+}
+.registerButton.registerRegisterButton,
+.registerRegisterButton.registerRegisterButton {
+  width: 60%;
+  height: 50px;
+  background-color: #42b72a;
+  align-self: center;
+}
+
+.registerForgot {
+  text-align: center;
+  color: #1877f2;
+}
+
 .headerContainer {
   width: 100%;
   height: 50px;
@@ -359,7 +529,7 @@
   border: none;
   padding: 7px;
   border-radius: 5px;
-  background-color: green;
+  background-color: #42b72a;
   margin-right: 20px;
   cursor: pointer;
 }

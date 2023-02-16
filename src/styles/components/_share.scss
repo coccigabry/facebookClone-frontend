@@ -63,7 +63,7 @@
     @include font(unset, 500, #fff);
     border: none;
     padding: 7px;border-radius: 5px;
-    background-color: green;
+    background-color: $coccibook-green;
     margin-right: 20px;
     cursor: pointer;
 }

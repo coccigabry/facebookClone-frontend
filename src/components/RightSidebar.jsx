@@ -85,7 +85,7 @@ export default function RightSidebar({ profile }) {
     return (
         <div className="rightSidebar">
             <div className="rightSidebarWrapper">
-                <ProfileSidebar />
+                {profile ? <ProfileSidebar /> : <HomepageSidebar />}
             </div>
         </div>
     )
