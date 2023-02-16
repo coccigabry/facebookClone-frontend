@@ -1,64 +1,13 @@
-.friends {
-    flex: 3.5;
-}
-
-.friendsWrapper {
-    padding: 20px 20px 0 0;
-}
-
-.birthdayContainer {
+.friendsFriend {
     @include flex(center, unset, row, unset);
-}
-
-.birthdayImg {
-    @include widthHeight(40px, 40px);
-    margin-right: 10px;
-}
-
-.birthdayText {
-    @include font(15px, 300, #000);
-}
-
-.friendsAd {
-    @include widthHeight(100%, auto);
-    border-radius: 10px;
-    margin: 30px 0;
-}
-
-.friendsTitle {
-  margin-bottom: 20px;  
-}
-
-.friendsList {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-}
-
-.friendsFriendItem {
-    @include flex(center, unset, row, unset);
+    width: fit-content;
     margin-bottom: 15px;
+    cursor: pointer;
 }
 
-.friendsProfileImgContainer {
-    margin-right: 10px;
-    position: relative;
-}
-
-.friendsProfileImg {
-    @include widthHeight(40px, 40px);
+.friendsFriendImg {
+    @include widthHeight(32px, 32px);
     border-radius: 50%;
     object-fit: cover;
-}
-
-.friendsOnline {
-    @include widthHeight(12px, 12px);
-    @include positionAbsolute (unset, -5px, 5px, unset);
-    border-radius: 50%;
-    border: 2px solid #fff;
-    background-color: green;
-}
-
-.friendsUsername {
-    font-weight: 500;
+    margin-right: 10px;
 }

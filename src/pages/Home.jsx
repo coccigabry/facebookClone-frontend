@@ -1,7 +1,7 @@
-import Feed from "../components/Feed"
-import Friends from "../components/Friends"
 import Header from "../components/Header"
-import Sidebar from "../components/Sidebar"
+import LeftSidebar from "../components/LeftSidebar"
+import Feed from "../components/Feed"
+import RightSidebar from "../components/RightSidebar"
 
 
 export default function Home() {
@@ -10,9 +10,9 @@ export default function Home() {
     <>
       <Header />
       <div className="homeContainer">
-        <Sidebar />
+        <LeftSidebar />
         <Feed />
-        <Friends />
+        <RightSidebar />
       </div>
     </>
   )
