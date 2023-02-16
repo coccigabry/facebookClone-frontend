@@ -1,13 +1,23 @@
-import { useState } from 'react'
+import axios from 'axios'
+import { format } from 'timeago.js'
+import { useEffect, useState } from 'react'
 import { MdMoreVert } from 'react-icons/md'
-import { Users } from '../data.js'
 
 
 export default function Post({ post }) {
-    const [likeIt, setLikeIt] = useState(post.like)
+    const [user, setUser] = useState({})
+    const [likeIt, setLikeIt] = useState(post.likes.length)
     const [isLiked, setIsLiked] = useState(false)
 
-    const { title, photo, date, userId, comments } = post
+    const { userId, desc, img, createdAt } = post
+
+    useEffect(() => {
+        const fetchUser = async () => {
+            const res = await axios.get(`/api/users/${userId}`)
+            setUser(res.data.infos)
+        }
+        fetchUser()
+    }, [userId])
 
     const likeHandler = () => {
         setLikeIt(
@@ -16,33 +26,46 @@ export default function Post({ post }) {
         setIsLiked(!isLiked)
     }
 
-    const renderUser = Users.filter(user => user.id === userId)
 
     return (
         <div className="post">
             <div className="postWrapper">
                 <div className="postTop">
                     <div className="postTopLeft">
-                        <img src={renderUser[0].avatar} alt="profile image" className="postProfileImg" />
-                        <span className="postUsername">{renderUser[0].username}</span>
-                        <span className="postDate">{date}</span>
+                        <img
+                            src={user.profilePicture || '/src/assets/no-user.png'}
+                            alt="profile image"
+                            className="postProfileImg"
+                        />
+                        <span className="postUsername">{user.username}</span>
+                        <span className="postDate">{format(createdAt)}</span>
                     </div>
                     <div className="postTopRight">
                         <MdMoreVert />
                     </div>
                 </div>
                 <div className="postCenter">
-                    <span className="postText">{title}</span>
-                    <img src={photo} alt="post image" className='postImage' />
+                    <span className="postText">{desc}</span>
+                    <img src={img} alt="" className='postImage' />
                 </div>
                 <div className="postBottom">
                     <div className="postBottomLeft">
-                        <img src="/src/assets/like.png" alt="like post" className='likeIcon' onClick={likeHandler} />
-                        <img src="/src/assets/heart.png" alt="love post" className='likeIcon' onClick={likeHandler} />
+                        <img
+                            src="/src/assets/like.png"
+                            alt="like post"
+                            className='likeIcon'
+                            onClick={likeHandler}
+                        />
+                        <img
+                            src="/src/assets/heart.png"
+                            alt="love post"
+                            className='likeIcon'
+                            onClick={likeHandler}
+                        />
                         <span className="postLikeCounter">{likeIt} people like it</span>
                     </div>
                     <div className="postBottomRight">
-                        <span className="postCommentText">{comments} comments</span>
+                        <span className="postCommentText">0 comments</span>
                     </div>
                 </div>
             </div>

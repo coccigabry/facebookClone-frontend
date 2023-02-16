@@ -3,6 +3,10 @@
   font-family: "Roboto", sans-serif;
 }
 
+a {
+  text-decoration: none;
+}
+
 .homeContainer {
   display: flex;
   align-items: unset;
@@ -356,7 +360,7 @@
 .leftSidebar {
   width: unset;
   height: calc(100vh - 50px);
-  flex: 3;
+  flex: 2.5;
   overflow-y: scroll;
   position: sticky;
   top: 50px;
@@ -443,7 +447,7 @@
 }
 
 .feed {
-  flex: 5.5;
+  flex: 6;
 }
 
 .feedWrapper {

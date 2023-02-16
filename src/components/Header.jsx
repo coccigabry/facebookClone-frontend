@@ -1,5 +1,5 @@
-import { BsSearch, BsPersonFill, BsChatDots } from 'react-icons/bs'
-import { MdNotifications } from 'react-icons/md'
+import { Link } from 'react-router-dom'
+import { BsSearch, BsPersonFill, BsChatDotsFill, BsBellFill } from 'react-icons/bs'
 
 
 export default function Header() {
@@ -7,7 +7,9 @@ export default function Header() {
     return (
         <div className='headerContainer'>
             <div className="headerLeft">
-                <span className="logo">Coccibook</span>
+                <Link to='/'>
+                    <span className="logo">Coccibook</span>
+                </Link>
             </div>
             <div className="headerCenter">
                 <div className="searchbar">
@@ -26,11 +28,11 @@ export default function Header() {
                         <span className="headerIconBadge">1</span>
                     </div>
                     <div className="headerIconItem">
-                        <BsChatDots className='iconItem' />
+                        <BsChatDotsFill className='iconItem' />
                         <span className="headerIconBadge">1</span>
                     </div>
                     <div className="headerIconItem">
-                        <MdNotifications className='iconItem' />
+                        <BsBellFill className='iconItem' />
                         <span className="headerIconBadge">1</span>
                     </div>
                 </div>

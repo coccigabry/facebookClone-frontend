@@ -14,11 +14,11 @@ export default function Share() {
                 <div className="shareBottom">
                     <div className="shareOptions">
                         <div className="shareOption">
-                            <MdPermMedia style={{ color: 'black' }} className='shareIcon' />
+                            <MdPermMedia style={{ color: 'orange' }} className='shareIcon' />
                             <span className="shareOptionText">Add Photo/Video</span>
                         </div>
                         <div className="shareOption">
-                            <MdLabel style={{ color: 'black' }} className='shareIcon' />
+                            <MdLabel style={{ color: 'blue' }} className='shareIcon' />
                             <span className="shareOptionText">Tag a friend</span>
                         </div>
                         <div className="shareOption">
