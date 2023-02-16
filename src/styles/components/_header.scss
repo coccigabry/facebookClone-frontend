@@ -43,14 +43,12 @@
 
 .headerRight {
     @include flex(center, space-around, row, unset);
-    @include font(unset, unset, #fff);
+    color: #fff;
     flex: 4;
 }
 
-.headerLinks {}
-
 .headerLink {
-    @include font(14px, unset, unset);
+    font-size: 14px;
     margin-right: 10px;
     cursor: pointer;
 }
@@ -66,14 +64,14 @@
 }
 
 .iconItem {
-    @include font(22px, unset, unset);
+    font-size: 22px;
 }
 
 .headerIconBadge {
     @include widthHeight(15px, 15px);
     @include flex(center, center, row, unset);
-    @include font(12px, unset, unset);
     @include positionAbsolute(-5px, -5px, unset, unset);
+    font-size: 12px;
     border-radius: 50%;
     background-color: $coccibook-alert;
 } 

@@ -76,16 +76,12 @@
   justify-content: space-around;
   flex-direction: row;
   gap: unset;
-  font-size: unset;
-  font-weight: unset;
   color: #fff;
   flex: 4;
 }
 
 .headerLink {
   font-size: 14px;
-  font-weight: unset;
-  color: unset;
   margin-right: 10px;
   cursor: pointer;
 }
@@ -102,8 +98,6 @@
 
 .iconItem {
   font-size: 22px;
-  font-weight: unset;
-  color: unset;
 }
 
 .headerIconBadge {
@@ -114,14 +108,12 @@
   justify-content: center;
   flex-direction: row;
   gap: unset;
-  font-size: 12px;
-  font-weight: unset;
-  color: unset;
   position: absolute;
   top: -5px;
   right: -5px;
   bottom: unset;
   left: unset;
+  font-size: 12px;
   border-radius: 50%;
   background-color: #c40000;
 }
@@ -174,15 +166,17 @@
 }
 
 .sidebarIcon {
+  font-size: 22px;
   margin-right: 15px;
 }
 
 .sidebarBtn {
   width: 150px;
-  height: unset;
+  height: auto;
   border: none;
   padding: 10px;
   border-radius: 5px;
+  font-weight: 500;
 }
 
 .sidebarHr {
@@ -217,6 +211,267 @@
   flex: 5.5;
 }
 
+.feedWrapper {
+  padding: 20px;
+}
+
+.share {
+  width: 100%;
+  height: 170px;
+  border-radius: 10px;
+  box-shadow: 0px 1px 16px -8px #000000;
+  color: lightskyblue;
+}
+
+.shareWrapper {
+  padding: 10px;
+}
+
+.shareTop {
+  display: flex;
+}
+
+.shareProfileImg {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-right: 10px;
+}
+
+.shareInput {
+  width: 80%;
+  height: auto;
+  border: none;
+}
+.shareInput:focus {
+  outline: none;
+}
+
+.shareHr {
+  margin: 20px;
+}
+
+.shareBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  gap: unset;
+}
+
+.shareOptions {
+  display: flex;
+  margin-left: 20px;
+}
+
+.shareOption {
+  display: flex;
+  align-items: center;
+  justify-content: unset;
+  flex-direction: row;
+  gap: unset;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.shareIcon {
+  font-size: 22px;
+  margin-right: 3px;
+}
+
+.shareOptionText {
+  font-size: 14px;
+  font-weight: 500;
+  color: #000;
+}
+
+.shareButton {
+  font-size: unset;
+  font-weight: 500;
+  color: #fff;
+  border: none;
+  padding: 7px;
+  border-radius: 5px;
+  background-color: green;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.post {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0px 1px 16px -8px #000000;
+  margin: 30px 0;
+}
+
+.postWrapper {
+  padding: 10px;
+}
+
+.postTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  gap: unset;
+}
+
+.postTopLeft {
+  display: flex;
+  align-items: center;
+  justify-content: unset;
+  flex-direction: row;
+  gap: unset;
+}
+
+.postProfileImg {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.postUsername {
+  font-size: 15px;
+  font-weight: 500;
+  color: #000;
+  margin: 0 10px;
+}
+
+.postDate {
+  font-size: 12px;
+}
+
+.postCenter {
+  margin: 20px 0;
+}
+
+.postImage {
+  width: 100%;
+  height: auto;
+  max-height: 500px;
+  margin-top: 20px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.postBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  gap: unset;
+}
+
+.postBottomLeft {
+  display: flex;
+  align-items: center;
+  justify-content: unset;
+  flex-direction: row;
+  gap: unset;
+}
+
+.likeIcon {
+  width: 24px;
+  height: 24px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.postLikeCounter {
+  font-size: 15px;
+}
+
+.postCommentText {
+  font-size: 15px;
+  cursor: pointer;
+  border-bottom: 1px dashed grey;
+}
+
 .friends {
   flex: 3.5;
+}
+
+.friendsWrapper {
+  padding: 20px 20px 0 0;
+}
+
+.birthdayContainer {
+  display: flex;
+  align-items: center;
+  justify-content: unset;
+  flex-direction: row;
+  gap: unset;
+}
+
+.birthdayImg {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.birthdayText {
+  font-size: 15px;
+  font-weight: 300;
+  color: #000;
+}
+
+.friendsAd {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin: 30px 0;
+}
+
+.friendsTitle {
+  margin-bottom: 20px;
+}
+
+.friendsList {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.friendsFriendItem {
+  display: flex;
+  align-items: center;
+  justify-content: unset;
+  flex-direction: row;
+  gap: unset;
+  margin-bottom: 15px;
+}
+
+.friendsProfileImgContainer {
+  margin-right: 10px;
+  position: relative;
+}
+
+.friendsProfileImg {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.friendsOnline {
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  top: unset;
+  right: -5px;
+  bottom: 5px;
+  left: unset;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  background-color: green;
+}
+
+.friendsUsername {
+  font-weight: 500;
 }/*# sourceMappingURL=style.css.map */
