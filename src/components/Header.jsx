@@ -1,8 +1,12 @@
 import { Link } from 'react-router-dom'
 import { BsSearch, BsPersonFill, BsChatDotsFill, BsBellFill } from 'react-icons/bs'
+import { useContext } from 'react'
+import { AuthContext } from '../context/context'
 
 
 export default function Header() {
+    const { user } = useContext(AuthContext)
+
 
     return (
         <div className='headerContainer'>
@@ -36,7 +40,9 @@ export default function Header() {
                         <span className="headerIconBadge">1</span>
                     </div>
                 </div>
-                <img src="/src/assets/utri.jpg" alt="profile img" className='headerImg' />
+                <Link to={`/profile/${user.other._id}`}>
+                    <img src={user.other.profilePicture || '/src/assets/no-user.png'} alt="profile img" className='headerImg' />
+                </Link>
             </div>
         </div>
     )

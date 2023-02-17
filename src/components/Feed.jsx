@@ -1,19 +1,23 @@
 import Share from "./Share"
 import Post from "./Post"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import axios from "axios"
+import { AuthContext } from "../context/context"
 
 
-export default function Feed() {
+export default function Feed({ userId }) {
+    const { user } = useContext(AuthContext)
     const [posts, setPosts] = useState([])
 
     useEffect(() => {
         const fetchPosts = async () => {
-            const res = await axios.get('/api/posts/timeline/63e4d15c9344e5d9e2d56407')
+            const res = userId
+                ? await axios.get(`/api/posts/profile/${userId}`)
+                : await axios.get(`/api/posts/timeline/${user.other._id}`)
             setPosts(res.data.infos)
         }
         fetchPosts()
-    }, [])
+    }, [userId, user.other._id])
 
     const renderPosts = posts.map(post => <Post key={post._id} post={post} />)
 

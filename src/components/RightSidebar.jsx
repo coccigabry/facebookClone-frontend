@@ -2,7 +2,7 @@ import Online from './Online.jsx'
 import { Users } from '../data.js'
 
 
-export default function RightSidebar({ profile }) {
+export default function RightSidebar({ user }) {
 
     const HomepageSidebar = () => {
         const renderUsers = Users.map(user => <Online key={user.id} user={user} />)
@@ -25,22 +25,39 @@ export default function RightSidebar({ profile }) {
         )
     }
 
+
     const ProfileSidebar = () => {
+
+        const { city, job, relationship } = user
+    
+        const getRelationshipStatus = (relationship) => {
+            switch (relationship) {
+                case 1:
+                    return 'Single'
+                case 2:
+                    return 'On a relationship'
+                case 3:
+                    return 'Married'
+                default:
+                    return ''
+            }
+        }
+
         return (
             <>
                 <h4 className='rightSidebarProfileTitle'>User Information</h4>
                 <div className="rightSidebarInfo">
                     <div className="rightSidebarInfoItem">
                         <span className="rightSidebarInfoKey">City:</span>
-                        <span className="rightSidebarInfoValue">Genoa</span>
+                        <span className="rightSidebarInfoValue">{city}</span>
                     </div>
                     <div className="rightSidebarInfoItem">
                         <span className="rightSidebarInfoKey">Job:</span>
-                        <span className="rightSidebarInfoValue">Web Developer</span>
+                        <span className="rightSidebarInfoValue">{job}</span>
                     </div>
                     <div className="rightSidebarInfoItem">
                         <span className="rightSidebarInfoKey">Status:</span>
-                        <span className="rightSidebarInfoValue">On a relationship</span>
+                        <span className="rightSidebarInfoValue">{getRelationshipStatus(relationship)}</span>
                     </div>
                 </div>
                 <h4 className='rightSidebarProfileTitle'>User Friends</h4>
@@ -49,43 +66,16 @@ export default function RightSidebar({ profile }) {
                         <img src="/src/assets/utri.jpg" alt="user following picture" className="rightSidebarFollowingImg" />
                         <span className="rightSidebarFollowingName">Jonny</span>
                     </div>
-                    <div className="rightSidebarFollowing">
-                        <img src="/src/assets/utri.jpg" alt="user following picture" className="rightSidebarFollowingImg" />
-                        <span className="rightSidebarFollowingName">Jimmy</span>
-                    </div>
-                    <div className="rightSidebarFollowing">
-                        <img src="/src/assets/utri.jpg" alt="user following picture" className="rightSidebarFollowingImg" />
-                        <span className="rightSidebarFollowingName">JJ</span>
-                    </div>
-                    <div className="rightSidebarFollowing">
-                        <img src="/src/assets/utri.jpg" alt="user following picture" className="rightSidebarFollowingImg" />
-                        <span className="rightSidebarFollowingName">Jenny</span>
-                    </div>
-                    <div className="rightSidebarFollowing">
-                        <img src="/src/assets/utri.jpg" alt="user following picture" className="rightSidebarFollowingImg" />
-                        <span className="rightSidebarFollowingName">Jenny</span>
-                    </div>
-                    <div className="rightSidebarFollowing">
-                        <img src="/src/assets/utri.jpg" alt="user following picture" className="rightSidebarFollowingImg" />
-                        <span className="rightSidebarFollowingName">Jenny</span>
-                    </div>
-                    <div className="rightSidebarFollowing">
-                        <img src="/src/assets/utri.jpg" alt="user following picture" className="rightSidebarFollowingImg" />
-                        <span className="rightSidebarFollowingName">Jenny</span>
-                    </div>
-                    <div className="rightSidebarFollowing">
-                        <img src="/src/assets/utri.jpg" alt="user following picture" className="rightSidebarFollowingImg" />
-                        <span className="rightSidebarFollowingName">Jenny</span>
-                    </div>
                 </div>
             </>
         )
     }
 
+    
     return (
         <div className="rightSidebar">
             <div className="rightSidebarWrapper">
-                {profile ? <ProfileSidebar /> : <HomepageSidebar />}
+                {user ? <ProfileSidebar /> : <HomepageSidebar />}
             </div>
         </div>
     )

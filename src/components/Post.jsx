@@ -1,25 +1,36 @@
 import axios from 'axios'
 import { format } from 'timeago.js'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { MdMoreVert } from 'react-icons/md'
+import { AuthContext } from '../context/context'
 
 
 export default function Post({ post }) {
-    const [user, setUser] = useState({})
+    const { user } = useContext(AuthContext)
+
+    const [userHasWrittenPost, setUserHasWrittenPost] = useState({})
     const [likeIt, setLikeIt] = useState(post.likes.length)
     const [isLiked, setIsLiked] = useState(false)
 
-    const { userId, desc, img, createdAt } = post
+    useEffect(() => {
+        setIsLiked(post.likes.includes(user.other._id))
+    }, [user.other._id, post.likes])
 
     useEffect(() => {
         const fetchUser = async () => {
-            const res = await axios.get(`/api/users/${userId}`)
-            setUser(res.data.infos)
+            const res = await axios.get(`/api/users/${post.userId}`)
+            setUserHasWrittenPost(res.data.infos)
         }
         fetchUser()
-    }, [userId])
+    }, [user.other._id])
 
-    const likeHandler = () => {
+    const likeHandler = async () => {
+        try {
+            await axios.put(`/api/posts/${post._id}/like`, { userId: user.other._id })
+        } catch (err) {
+            console.error(err)
+        }
         setLikeIt(
             isLiked ? likeIt - 1 : likeIt + 1
         )
@@ -32,21 +43,23 @@ export default function Post({ post }) {
             <div className="postWrapper">
                 <div className="postTop">
                     <div className="postTopLeft">
-                        <img
-                            src={user.profilePicture || '/src/assets/no-user.png'}
-                            alt="profile image"
-                            className="postProfileImg"
-                        />
-                        <span className="postUsername">{user.username}</span>
-                        <span className="postDate">{format(createdAt)}</span>
+                        <Link to={`/profile/${userHasWrittenPost._id}`}>
+                            <img
+                                src={userHasWrittenPost.profilePicture || '/src/assets/no-user.png'}
+                                alt="profile image"
+                                className="postProfileImg"
+                            />
+                            <span className="postUsername">{userHasWrittenPost.username}</span>
+                        </Link>
+                        <span className="postDate">{format(post.createdAt)}</span>
                     </div>
                     <div className="postTopRight">
                         <MdMoreVert />
                     </div>
                 </div>
                 <div className="postCenter">
-                    <span className="postText">{desc}</span>
-                    <img src={img} alt="" className='postImage' />
+                    <span className="postText">{post.desc}</span>
+                    <img src={post.img} alt="" className='postImage' />
                 </div>
                 <div className="postBottom">
                     <div className="postBottomLeft">

@@ -4,6 +4,11 @@
 }
 
 a {
+  display: flex;
+  align-items: center;
+  justify-content: unset;
+  flex-direction: row;
+  gap: unset;
   text-decoration: none;
 }
 
@@ -144,12 +149,22 @@ a {
   background-color: #1877f2;
   cursor: pointer;
 }
+.loginButton:disabled,
+.loginRegisterButton:disabled {
+  cursor: not-allowed;
+}
 .loginButton.loginRegisterButton,
 .loginRegisterButton.loginRegisterButton {
   width: 60%;
   height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: unset;
+  gap: unset;
   background-color: #42b72a;
   align-self: center;
+  text-align: center;
 }
 
 .loginForgot {

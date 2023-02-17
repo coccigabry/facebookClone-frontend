@@ -54,10 +54,16 @@
     background-color: $coccibook-blue;
     cursor: pointer;
 
+    &:disabled {
+        cursor: not-allowed;
+    }
+
     &.loginRegisterButton {
         @include widthHeight(60%, 50px);
+        @include flex(center, center, unset, unset);
         background-color: $coccibook-green;
-        align-self: center;
+        align-self: center ;
+        text-align: center;
     }
 }
 
