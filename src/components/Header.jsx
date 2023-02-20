@@ -1,11 +1,24 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { BsSearch, BsPersonFill, BsChatDotsFill, BsBellFill } from 'react-icons/bs'
-import { useContext } from 'react'
+import { useContext, useRef } from 'react'
 import { AuthContext } from '../context/context'
+import axios from 'axios'
 
 
 export default function Header() {
     const { user } = useContext(AuthContext)
+    const search = useRef()
+    const navigate = useNavigate()
+
+    const handleSearch = async (e) => {
+        e.preventDefault()
+        try {
+            const res = await axios.get(`/api/users/${search.current.value}`)
+            navigate(`/profile/${res.data.infos._id}`)
+        } catch (err) {
+            console.error(err)
+        }
+    }
 
 
     return (
@@ -16,16 +29,17 @@ export default function Header() {
                 </Link>
             </div>
             <div className="headerCenter">
-                <div className="searchbar">
+                <form className="searchbar" onSubmit={handleSearch}>
                     <BsSearch className='searchIcon' />
-                    <input type='text' placeholder='Search friends, posts, videos' className="searchInput" />
-                </div>
+                    <input
+                        type='text'
+                        ref={search}
+                        placeholder='Search friends, posts, videos'
+                        className="searchInput"
+                    />
+                </form>
             </div>
             <div className="headerRight">
-                <div className="headerLinks">
-                    <span className="headerLink">Homepage</span>
-                    <span className="headerLink">Timeline</span>
-                </div>
                 <div className="headerIcons">
                     <div className="headerIconItem">
                         <BsPersonFill className='iconItem' />
@@ -40,6 +54,7 @@ export default function Header() {
                         <span className="headerIconBadge">1</span>
                     </div>
                 </div>
+                Welcome back, {user.other.username} !
                 <Link to={`/profile/${user.other._id}`}>
                     <img src={user.other.profilePicture || '/src/assets/no-user.png'} alt="profile img" className='headerImg' />
                 </Link>

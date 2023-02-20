@@ -48,7 +48,6 @@ export default function LeftSidebar() {
                         <span className="leftSidebarListItemText">Events</span>
                     </li>
                 </ul>
-                <button className="leftSidebarBtn">Show More</button>
                 <hr className="leftSidebarHr" />
                 <ul className="leftSidebarFriendList">
                     {renderUsers}

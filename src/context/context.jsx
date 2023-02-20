@@ -8,12 +8,13 @@ const INITIAL_STATE = {
     error: false
 }
 
+
 const AuthContext = createContext(INITIAL_STATE)
 
 const AuthProvider = ({ children }) => {
     const [state, dispatch] = useReducer(authReducer, INITIAL_STATE)
 
-
+    console.log(state.user)
     return (
         <AuthContext.Provider value={{
             user: state.user,

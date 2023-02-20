@@ -31,7 +31,7 @@ const authReducer = (state, action) => {
                     other: {
                         ...state.user.other,
                         following: [
-                            ...state.user.following,
+                            ...state.user.other.following,
                             action.payload
                         ]
                     }

@@ -29,7 +29,7 @@ export default function Feed({ userId }) {
         <div className="feed">
             <div className="feedWrapper">
                 {
-                    userId === user.other._id && <Share />
+                    !userId || userId === user.other._id ? <Share /> : ''
                 }
                 {renderPosts}
             </div>

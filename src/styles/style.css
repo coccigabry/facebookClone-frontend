@@ -326,12 +326,6 @@ a {
   flex: 4;
 }
 
-.headerLink {
-  font-size: 14px;
-  margin-right: 10px;
-  cursor: pointer;
-}
-
 .headerIcons {
   display: flex;
 }
