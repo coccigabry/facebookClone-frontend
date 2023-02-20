@@ -41,6 +41,19 @@
 
 // -------------- PROFILE SIDEBAR -------------- //
 
+.rightSidebarFollowBtn {
+    @include font(16px, 500, #fff);
+    margin-top: 30px;
+    margin-bottom: 10px;
+    border: none;
+    background-color: $coccibook-blue;
+    border-radius: 5px;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
 .rightSidebarProfileTitle {
     @include font(18px, 500, #000);
     margin-bottom: 10px;

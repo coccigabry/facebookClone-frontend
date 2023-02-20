@@ -6,4 +6,5 @@
 a {
     @include flex(center, unset, row, unset);
     text-decoration: none;
+    color: black;
 }

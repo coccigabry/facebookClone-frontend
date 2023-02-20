@@ -1,11 +1,19 @@
 import Online from './Online.jsx'
 import { Users } from '../data.js'
+import { useContext, useEffect, useState } from 'react'
+import axios from 'axios'
+import { Link } from 'react-router-dom'
+import { AuthContext } from '../context/context'
+import { FaPlusCircle, FaMinusCircle } from 'react-icons/fa'
 
 
 export default function RightSidebar({ user }) {
+    const { user: currentUser, dispatch } = useContext(AuthContext)
+
 
     const HomepageSidebar = () => {
         const renderUsers = Users.map(user => <Online key={user.id} user={user} />)
+
         return (
             <>
                 <div className="birthdayContainer">
@@ -27,24 +35,61 @@ export default function RightSidebar({ user }) {
 
 
     const ProfileSidebar = () => {
-
         const { city, job, relationship } = user
-    
-        const getRelationshipStatus = (relationship) => {
-            switch (relationship) {
-                case 1:
-                    return 'Single'
-                case 2:
-                    return 'On a relationship'
-                case 3:
-                    return 'Married'
-                default:
-                    return ''
+        const [friends, setFriends] = useState([])
+        const [followed, setFollowed] = useState(currentUser.other.following.includes(user?._id))
+
+
+        useEffect(() => {
+            const getFriends = async () => {
+                try {
+                    const res = await axios.get(`/api/users/friends/${user._id}`)
+                    setFriends(res.data.infos)
+                } catch (err) {
+                    console.error(err)
+                }
             }
+            getFriends()
+        }, [user._id])
+
+        const handleFollow = async () => {
+            try {
+                if (followed) {
+                    console.log(user._id)
+                    await axios.put(`/api/users/${user._id}/unfollow`, { userId: currentUser.other._id })
+                    dispatch({ type: "UNFOLLOW", payload: user._id })
+                } else {
+                    await axios.put(`/api/users/${user._id}/follow`, { userId: currentUser.other._id })
+                    dispatch({ type: "FOLLOW", payload: user._id })
+                }
+            } catch (err) {
+                console.error(err)
+            }
+            setFollowed(!followed)
         }
+
+
+        const renderFriends = friends.map(friend => {
+            return (
+                <Link to={`/profile/${friend._id}`} key={friend._id}>
+                    <div className="rightSidebarFollowing" >
+                        <img src={friend.profilePicture || '/src/assets/no-user.png'} alt="user following picture" className="rightSidebarFollowingImg" />
+                        <span className="rightSidebarFollowingName">{friend.username}</span>
+                    </div>
+                </Link>
+            )
+        })
+
 
         return (
             <>
+                {
+                    user._id !== currentUser.other._id &&
+                    <button className="rightSidebarFollowBtn" onClick={handleFollow} >
+                        {followed ? 'Unfollow' : 'Follow'}
+                        {followed ? <FaMinusCircle style={{ marginLeft: '5px' }} /> : <FaPlusCircle style={{ marginLeft: '5px' }} />}
+                    </button>
+                }
                 <h4 className='rightSidebarProfileTitle'>User Information</h4>
                 <div className="rightSidebarInfo">
                     <div className="rightSidebarInfoItem">
@@ -57,21 +102,18 @@ export default function RightSidebar({ user }) {
                     </div>
                     <div className="rightSidebarInfoItem">
                         <span className="rightSidebarInfoKey">Status:</span>
-                        <span className="rightSidebarInfoValue">{getRelationshipStatus(relationship)}</span>
+                        <span className="rightSidebarInfoValue">{relationship === 1 ? 'Single' : relationship === 2 ? 'On a relationship' : 'Married'}</span>
                     </div>
                 </div>
                 <h4 className='rightSidebarProfileTitle'>User Friends</h4>
                 <div className="rightSidebarFollowings">
-                    <div className="rightSidebarFollowing">
-                        <img src="/src/assets/utri.jpg" alt="user following picture" className="rightSidebarFollowingImg" />
-                        <span className="rightSidebarFollowingName">Jonny</span>
-                    </div>
+                    {renderFriends}
                 </div>
             </>
         )
     }
 
-    
+
     return (
         <div className="rightSidebar">
             <div className="rightSidebarWrapper">

@@ -1,11 +1,27 @@
 import Friends from './Friends.jsx';
 import { MdRssFeed, MdChat, MdVideocam, MdGroup, MdEvent } from 'react-icons/md';
-import { Users } from '../data.js'
+import { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../context/context.jsx';
+import axios from 'axios';
 
 
 export default function LeftSidebar() {
+    const { user: currentUser } = useContext(AuthContext)
+    const [friends, setFriends] = useState([])
 
-    const renderUsers = Users.map(user => <Friends key={user.id} user={user} />)
+    useEffect(() => {
+        const getFriends = async () => {
+            try {
+                const res = await axios.get(`/api/users/friends/${currentUser.other._id}`)
+                setFriends(res.data.infos)
+            } catch (err) {
+                console.error(err)
+            }
+        }
+        getFriends()
+    }, [currentUser.other._id])
+
+    const renderUsers = friends.map(friend => <Friends key={friend._id} user={friend} />)
 
     return (
         <div className="leftSidebar">
